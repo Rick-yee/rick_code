@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        nav {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        #id-div-result {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>JavaScript-Calculator</nav>
+    </header>
+    <hr>
+    <table>
+        <tr>
+            <td colspan="2">
+                <input type="text" id="id-input-text-calculator" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button id="id-btn-1" onclick="on_btn_click(this.id)" value="1">1</button>
+                <button id="id-btn-2" onclick="on_btn_click(this.id)" value="2">2</button>
+                <button id="id-btn-3" onclick="on_btn_click(this.id)" value="3">3</button>
+                <button id="id-btn-add" onclick="on_btn_click(this.id)" value="+">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button id="id-btn-4" onclick="on_btn_click(this.id)" value="4">4</button>
+                <button id="id-btn-5" onclick="on_btn_click(this.id)" value="5">5</button>
+                <button id="id-btn-6" onclick="on_btn_click(this.id)" value="6">6</button>
+                <button id="id-btn-minus" onclick="on_btn_click(this.id)" value="-">&minus;</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button id="id-btn-7" onclick="on_btn_click(this.id)" value="7">7</button>
+                <button id="id-btn-8" onclick="on_btn_click(this.id)" value="8">8</button>
+                <button id="id-btn-9" onclick="on_btn_click(this.id)" value="9">9</button>
+                <button id="id-btn-times" onclick="on_btn_click(this.id)" value="*">&times;</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button id="id-btn-0" onclick="on_btn_click(this.id)" value="0">0</button>
+                <button id="id-btn-c" onclick="on_btn_click(this.id)" value="c">C</button>
+                <button id="id-btn-equal" onclick="on_cal_click()" value="=">=</button>
+                <button id="id-btn-divide" onclick="on_btn_click(this.id)" value="/">&divide;</button>
+            </td>
+        </tr>
+    </table>
+    <div id="id-div-result"></div>
+    <script type="text/javascript">
+        function on_cal_click(){
+            var v_cal = document.getElementById("id-input-text-calculator").value;
+            try {
+                var v_result = eval(v_cal);
+                document.getElementById("id-div-result").innerText="result："+v_result;
+            } catch (e) {
+                document.getElementById("id-div-result").innerText="invalide";
+            }
+        }
+
+        function on_btn_click(thisid){
+            var btn = document.getElementById(thisid);
+            var v_value = btn.value;
+            var inputField = document.getElementById("id-input-text-calculator");
+            if(v_value =="c"){
+                inputField.value = "";
+                document.getElementById("id-div-result").innerText = "";
+            } else {
+                inputField.value += v_value;
+            }
+        }
+    </script>
+</body>
+</html>
